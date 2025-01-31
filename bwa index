@@ -3,7 +3,7 @@
 #$ -cwd
 #$ -l rl9=true
 #$ -pe sharedmem 4
-#$ -l h_vmem=60G  # Memory limit (modify as needed)
+#$ -l h_vmem=16G  # Memory limit (modify as needed)
 #$ -j y
 #$ -m ea
 #$ -M s2749646@ed.ac.uk
@@ -15,3 +15,6 @@ module load roslin/bwa/0.7.18
 
 # Run bwa
 bwa index GCA_905237065.1
+
+# map the sequence dat to the indexed reference genome
+bwa mem -t 8 GCA_905237065.1 SRR28213514_1.fastq SRR28213514_2.fastq > aligned.sam
